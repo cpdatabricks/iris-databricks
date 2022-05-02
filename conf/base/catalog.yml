@@ -13,7 +13,7 @@
 # template. Please feel free to remove it once you remove the example pipeline.
 example_iris_data:
   type: spark.SparkDataSet
-  filepath: data/01_raw/iris.csv
+  filepath: wasbs://iris@demostordb.blob.core.windows.net
   file_format: csv
   load_args:
     header: true
