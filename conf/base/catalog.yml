@@ -21,6 +21,7 @@ example_iris_data:
   save_args:
     sep: ","
     header: true
+  credentials: iris_creds
 
 # This is an example how to use `MemoryDataSet` with Spark objects that aren't `DataFrame`'s.
 # In particular, the `assign` copy mode ensures that the `MemoryDataSet` will be assigned

@@ -56,10 +56,14 @@ display(dbutils.fs.mounts())
 # COMMAND ----------
 
 dbutils.fs.mount(
-  source = "wasbs://iris@demostordb.blob.core.windows.net",
-  mount_point = "/mnt/iris",
+  source = "abfss://iris@demostordb.blob.core.windows.net",
+  mount_point = "/mnt/iris2",
   extra_configs = {"fs.azure.sas.iris.demostordb.blob.core.windows.net":"sp=r&st=2022-05-02T20:45:21Z&se=2023-05-03T04:45:21Z&spr=https&sv=2020-08-04&sr=c&sig=V6SmDPIGHQo6ACtpKFEbx54K0xX6yLm3Y70imST9chw%3D"})
 
 # COMMAND ----------
 
-display(spark.read.csv('/mnt/iris/iris.csv'))
+dbutils.fs.unmount('/mnt/iris')
+
+# COMMAND ----------
+
+display(spark.read.csv('/mnt/iris/iris.csv', header = True))
