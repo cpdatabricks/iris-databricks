@@ -9,14 +9,9 @@ pip install -r src/requirements.txt
 
 # COMMAND ----------
 
-import os
-os.getcwd()
-
-# COMMAND ----------
-
-# MAGIC %sh touch /Workspace/Repos/cara.phillips@databricks.com/iris-databricks/logs/log.txt
-
-# COMMAND ----------
+import logging
+logger = spark._jvm.org.apache.log4j
+logging.getLogger("py4j.java_gateway").setLevel(logging.ERROR)
 
 import os
 from kedro.framework.session import KedroSession
@@ -28,6 +23,23 @@ bootstrap_project(project_root)
 
 with KedroSession.create(project_path=project_root) as session:
     session.run()
+
+# COMMAND ----------
+
+pip install kedro-viz
+
+# COMMAND ----------
+
+# MAGIC %sh kedro viz
+
+# COMMAND ----------
+
+import os
+os.getcwd()
+
+# COMMAND ----------
+
+# MAGIC %sh touch /Workspace/Repos/cara.phillips@databricks.com/iris-databricks/logs/log.txt
 
 # COMMAND ----------
 
